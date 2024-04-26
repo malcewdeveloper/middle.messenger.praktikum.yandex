@@ -1,0 +1,17 @@
+.root {
+    border: none;
+    border-radius: 5px;
+    background-color: #3369F3;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 100%;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
