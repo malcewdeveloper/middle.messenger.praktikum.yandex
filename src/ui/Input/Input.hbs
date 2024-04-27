@@ -1,0 +1,8 @@
+<div class="{{settings.root.className}}">
+    <label for="{{setting.label.for}}" class="{{settings.label.className}}">{{settings.label.label}}</label>
+    <input class="{{settings.input.className}}" 
+    {{#if settings.input.placeholder}} placeholder="{{settings.input.placeholder}}" {{/if}} 
+    {{#if settings.input.id}} id="{{settings.input.id}}" {{/if}} 
+    {{#if settings.input.name}} name="{{settings.input.name}}" {{/if}}
+    {{#if settings.input.type}} type="{{settings.input.type}}" {{/if}}>
+</div>

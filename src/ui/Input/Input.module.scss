@@ -1,0 +1,27 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    color: #1E1E1E;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    line-height: 13px;
+    height: 51px;
+    box-sizing: border-box;
+
+    .label {
+        color: #999999;
+        margin-bottom: 8px;
+    }
+    .input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #3369F3;
+        height: 26px;
+        outline: none;
+
+        &:focus {
+            border-bottom-width: 2px;
+        }
+    }
+}
