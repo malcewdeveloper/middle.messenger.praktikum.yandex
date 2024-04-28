@@ -1,4 +1,4 @@
-.root {
+.input {
     display: flex;
     flex-direction: column;
     color: #1E1E1E;
@@ -9,11 +9,11 @@
     height: 51px;
     box-sizing: border-box;
 
-    .label {
+    .input__label {
         color: #999999;
         margin-bottom: 8px;
     }
-    .input {
+    .input__input {
         background-color: transparent;
         border: none;
         border-bottom: 1px solid #3369F3;
