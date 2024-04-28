@@ -1,0 +1,36 @@
+@mixin avatar-base {
+    .avatar__placeholder {
+        width: 100%;
+        height: 100%;
+        background-color: #EFEFEF;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .avatar__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.avatar[data-size="big"] {
+    width: 130px;
+    height: 130px;
+    
+    @include avatar-base;
+}
+
+.avatar[data-size="middle"] {
+    width: 47px;
+    height: 47px;
+
+    @include avatar-base;
+}
+
+.avatar[data-size="small"] {
+    width: 34px;
+    height: 34px;
+
+    @include avatar-base;
+}
