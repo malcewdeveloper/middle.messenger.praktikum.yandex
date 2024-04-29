@@ -1,0 +1,17 @@
+<aside class="chats-panel">
+    <div class="chats-panel__header">
+        <button class="chats-panel__button">
+            <span>Профиль</span>
+            <span></span>
+        </button>
+    </div>
+    <form class="chats-panel__search">
+        <input placeholder="Поиск" class="chats-panel__input" type="search">
+        <button class="chats-panel__search-button"></button>
+    </form>
+    <ul class="chats-panel__list">
+        {{#each chats as | chat |}}
+            <li class="chats-panel__item">{{> Chat chat=chat}}</li>
+        {{/each}}
+    </ul>
+</aside>
