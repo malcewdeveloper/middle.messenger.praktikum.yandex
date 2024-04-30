@@ -65,7 +65,7 @@
     &.message_me {
         background-color: #E4EDFD;
         border-radius: 12px 12px 0;
-        float: right;
+        align-self: end;
 
         .message__content {
             .message__time {
