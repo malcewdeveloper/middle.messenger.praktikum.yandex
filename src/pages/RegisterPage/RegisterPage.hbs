@@ -1,0 +1,11 @@
+<main>
+    <section id="register" class="register"> 
+        {{#> Form}}
+            {{#each inputs as |input|}}
+                {{> Input input=input}}
+            {{/each}}
+            {{> Button}}
+            <div class="register__action">Уже есть аккаунт? <a class="register__link" href="/login">Войти</a></div>
+        {{/Form}}
+    </section>
+</main>
