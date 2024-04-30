@@ -11,6 +11,10 @@
     padding: 12px 20px;
     width: 100%;
 
+    .button__icon {
+        display: inline-flex;
+    }
+
     &:hover {
         background-color: #0056b3;
     }
