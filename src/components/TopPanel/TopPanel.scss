@@ -1,0 +1,42 @@
+.top-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Inter", sans-serif;
+    height: 54px;
+    border-bottom: 1px solid #EAEAEA;
+
+    .top-panel__avatar {
+        display: flex;
+        align-items: center;
+
+        .top-panel__title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 13px;
+            color: #1E1E1E;
+            margin: 0 0 0 10px;
+        }
+    }
+
+    .top-panel__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer; 
+        padding: 0;
+        margin-right: 11px;
+        width: 20px;
+        height: 20px;
+        height: auto;   
+
+        &::before {
+            display: inline-block;
+            content: url(../../assets/dots.svg);
+            width: 3px;
+            height: 15px;
+        }
+    }
+}
