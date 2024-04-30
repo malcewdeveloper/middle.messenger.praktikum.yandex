@@ -1,1 +1,9 @@
-<button class="button">{{button.text}}</button>
+<button class="button {{#if button.className}}{{button.className}}{{/if}}">
+    {{#if button.iconStart}}
+        <span class="button__icon"><img src="{{button.iconStart}}" alt=""></span>
+    {{/if}}
+    {{#if button.text}}<span>{{button.text}}</span>{{/if}}
+    {{#if button.iconEnd}}
+        <span class="button__icon"><img src="{{button.iconEnd}}" alt=""></span>
+    {{/if}}
+</button>
