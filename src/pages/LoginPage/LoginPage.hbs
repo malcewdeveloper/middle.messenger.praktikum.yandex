@@ -1,0 +1,13 @@
+<main>
+    <section id="login" class="login">
+        {{#> Form}}
+            {{#each inputs as |input|}}
+                {{> Input input=input}}
+            {{/each}}
+            {{> Button}}
+            <div class="login__actions">
+                Еще нет аккаунта? <a class="login__link" href="/register">Регистрация</a>
+            </div>
+        {{/Form}}
+    </section>
+</main>
