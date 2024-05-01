@@ -1,0 +1,29 @@
+#preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .preview__links {
+        .preview__list {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            .preview__item {
+                .preview__link {
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: 13px;
+                    color: #3369F3;
+                    text-decoration: none;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
