@@ -5,6 +5,7 @@
     height: 100vh;
     font-family: "Inter", sans-serif;
     padding-top: 23px;
+    overflow-y: auto;
 
     .chats-panel__header {
         padding: 0 10px;
@@ -20,6 +21,7 @@
             font-weight: 500;
             font-family: "Inter", sans-serif;
             line-height: 12px;
+            text-decoration: none;
 
             &::after {
                 display: inline-block;
