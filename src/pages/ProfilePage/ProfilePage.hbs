@@ -1,0 +1,49 @@
+<main>
+    <section class="profile" id="profile">
+        <a href="/" class="profile__link">Вернуться к чатам</a>
+        <div class="profile__header">
+            <div class="profile__avatar">
+                {{> Avatar avatar=avatar}}  
+                <div class="profile__overlay">
+                    <p class="profile__overlay-text">Поменять <br> аватар</p>
+                </div>
+            </div>
+            <h2 class="profile__title">{{name}}</h2>
+        </div>
+        <div class="profile__content">
+            <ul class="profile__list">
+                <li class="profile__item">
+                    <label for="email" class="profile__label">Почта</label>
+                    <input type="email" name="email" class="profile__input" value="{{email}}" disabled>
+                </li>
+                <li class="profile__item">
+                    <label for="login" class="profile__label">Логин</label>
+                    <input type="text" name="login" class="profile__input" value="{{login}}" disabled>
+                </li>
+                <li class="profile__item">
+                    <label for="first_name" class="profile__label">Имя</label>
+                    <input type="text" name="first_name" class="profile__input" value="{{name}}" disabled>
+                </li>
+                <li class="profile__item">
+                    <label for="second_name" class="profile__label">Фамилия</label>
+                    <input type="text" name="second_name" class="profile__input" value="{{surname}}" disabled>
+                </li>
+                <li class="profile__item">
+                    <label for="display_name" class="profile__label">Имя в чате</label>
+                    <input type="text" name="display_name" class="profile__input" value="{{chatName}}" disabled>
+                </li>
+                <li class="profile__item">
+                    <label for="phone" class="profile__label">Телефон</label>
+                    <input type="tel" name="phone" class="profile__input" value="{{number}}" disabled>
+                </li>
+            </ul>
+        </div>
+        <div class="profile__actions">
+            {{#each actions as |button|}}
+                <div class="profile__actions-item">
+                    {{> Button button=button}}
+                </div>
+            {{/each}}
+        </div>
+    </section>
+</main>
