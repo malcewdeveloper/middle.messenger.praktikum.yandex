@@ -67,4 +67,3 @@
 Внешний вид мессенджера можно увидеть в Figma по [ссылке](https://www.figma.com/file/wMIiCW5uyGHtAwEZoDMgLf/ya-messenger-praktikum?type=design&node-id=0-1&mode=design&t=6PH6GTBKht9UEs7N-0)
 
 На первое время был использован макет, который предоставил Яндекс Практикум, в дальнейшем внешний вид будет изменен.
-
