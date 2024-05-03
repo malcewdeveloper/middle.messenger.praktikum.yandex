@@ -1,6 +1,4 @@
-<main>
-    <section class="chat-page" id="chat-page">
-        {{> ChatsPanel}}
-        {{> ChatPreview}}
-    </section>
-</main>
+{{#> PageLayout className="chat-page"}}
+    {{> ChatsPanel}}
+    {{> ChatPreview}}
+{{/PageLayout}}

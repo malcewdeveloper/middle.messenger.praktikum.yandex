@@ -2,6 +2,7 @@ import * as Components from './components';
 import * as UI from './ui';
 import * as Modules from './modules';
 import * as Pages from './pages';
+import * as Layouts from './layouts';
 import Handlebars from 'handlebars';
 import './global.scss';
 
@@ -50,7 +51,7 @@ const navigate = () => {
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('app');
 
-    Object.entries({...Components, ...UI, ...Modules}).forEach(([name, partial]) => {
+    Object.entries({...Components, ...UI, ...Modules, ...Layouts}).forEach(([name, partial]) => {
         Handlebars.registerPartial(name, partial);
     });
 
