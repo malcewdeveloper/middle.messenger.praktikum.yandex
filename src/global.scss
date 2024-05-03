@@ -1,6 +1,7 @@
-@import url(./normalize.scss);
+@import './normalize.scss';
+@import './variables.scss';
 
 * {
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
 }

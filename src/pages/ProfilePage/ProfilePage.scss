@@ -1,5 +1,7 @@
+@import '../../variables.scss';
+
 #profile {
-    color: #1E1E1E;
+    color: $primary-font-color;
     margin-top: 60px;
     margin-bottom: 60px;
     padding-left: 16px;
@@ -10,7 +12,7 @@
         font-size: 13px;
         font-weight: 500;
         line-height: 14px;
-        color: #3369F3;
+        color: $primary-color;
         text-decoration: none;
         margin-bottom: 16px;
 
@@ -19,7 +21,7 @@
             align-items: center;
             justify-content: center;
             content: url(../../assets/arrow-left.svg);
-            background-color: #3369F3;
+            background-color: $primary-color;
             border-radius: 50%;
             margin-right: 6px;
             width: 28px;
@@ -55,7 +57,7 @@
                     font-size: 13px;
                     font-weight: 500;
                     line-height: 14px;
-                    color: #fff;
+                    color: $white-color;
                     text-align: center;
                 }
             }
@@ -94,7 +96,7 @@
                 padding: 10px 0;
 
                 .profile__input {
-                    color: #999999;
+                    color: $secondary-font-color;
                     border: none;
                     background-color: transparent;
                     outline: none;
@@ -102,7 +104,7 @@
                 }
 
                 &:not(:last-child) {
-                    border-bottom: 1px solid #EAEAEA;
+                    border-bottom: 1px solid $border-primary-color;
                 }
             }
         }
@@ -115,21 +117,21 @@
         .profile__actions-item {
             .profile__button {
                 background-color: transparent;
-                color: #3369F3;
+                color: $primary-color;
                 text-align: start;
                 padding: 0;
                 width: auto;
     
                 &.profile__button_error {
-                    color: #FF0000;
+                    color: $error-color;
 
                     &:hover {
-                        color: #fa6363;
+                        color: $hover-error-color;
                     }
                 }
 
                 &:hover {
-                    color: #6792ff;
+                    color: $hover-primary-color;
                 }
             }
 

@@ -1,6 +1,8 @@
+@import '../../variables.scss';
+
 .chat-preview {
     position: relative;
-    background-color: #fff;
+    background-color: $white-color;
     width: 100%;
     height: 100vh;
     overflow: hidden;
@@ -9,7 +11,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #999999;
+        color: $secondary-font-color;
         font-size: 12px;
         font-weight: 500;
         line-height: 12px;
@@ -18,7 +20,7 @@
     }
 
     .chat-preview__header {
-        background-color: #fff;
+        background-color: $white-color;
         padding-left: 20px;
         padding-right: 20px;
         width: 100%;
@@ -33,7 +35,7 @@
             font-size: 12px;
             font-weight: 500;
             line-height: 12px;
-            color: #999999;
+            color: $secondary-font-color;
             text-align: center;
             margin-top: 48px;
             margin-bottom: 30px;
@@ -47,7 +49,7 @@
     }
 
     .chat-preview__footer {
-        background-color: #fff;
+        background-color: $white-color;
         padding-left: 20px;
         padding-right: 20px;
         width: 100%;

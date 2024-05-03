@@ -1,8 +1,10 @@
+@import '../../variables.scss';
+
 .bottom-panel {
     display: flex;
     align-items: center;
     border-top: 1px solid #EAEAEA;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     height: 54px;
 
     .bottom-panel__button {
@@ -44,11 +46,11 @@
     .buttom-panel__button-end {
         width: 28px;
         height: 28px;
-        background-color: #3369F3;
+        background-color: $primary-color;
         margin-left: 10px;
 
         &:hover {
-            background-color: #4879f6;
+            background-color: $hover-primary-color;
         }
     }
 }

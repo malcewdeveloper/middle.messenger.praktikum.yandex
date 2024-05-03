@@ -1,22 +1,24 @@
+@import '../../variables.scss';
+
 .input {
     display: flex;
     flex-direction: column;
-    color: #1E1E1E;
+    color: $primary-font-color;
     font-size: 13px;
     font-weight: 500;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     line-height: 13px;
     height: 51px;
     box-sizing: border-box;
 
     .input__label {
-        color: #999999;
+        color: $secondary-font-color;
         margin-bottom: 8px;
     }
     .input__input {
         background-color: transparent;
         border: none;
-        border-bottom: 1px solid #3369F3;
+        border-bottom: 1px solid $primary-color;
         height: 26px;
         outline: none;
 

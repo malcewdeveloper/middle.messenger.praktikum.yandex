@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .chat {
     display: grid;
     align-items: start;
@@ -5,8 +7,9 @@
     grid-template-rows: 70px;
     column-gap: 10px;
     cursor: pointer;
-    border-top: 1px solid #EAEAEA;
-    font-family: "Inter", sans-serif;
+    border-top: 1px solid $border-primary-color;
+    font-family: $base-font;
+    color: $primary-font-color;
     padding: 12px 0;
 
     .chat__content {
@@ -21,14 +24,14 @@
             font-size: 12px;
             line-height: 15px;
             font-weight: 500;
-            color: #999999;
+            color: $secondary-font-color;
             text-overflow: ellipsis;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
 
             .chat__preview-me {
-                color: #1E1E1E;
+                color: $primary-font-color;
             }
         }
     }
@@ -43,6 +46,6 @@
     }
 
     &:hover {
-        background-color: #E4EDFD;
+        background-color: $hover-primary-light-color;
     }
 }
