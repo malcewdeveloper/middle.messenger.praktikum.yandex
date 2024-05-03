@@ -1,10 +1,12 @@
+@import '../../variables.scss';
+
 .top-panel {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     height: 54px;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid $border-primary-color;
 
     .top-panel__avatar {
         display: flex;
@@ -14,7 +16,7 @@
             font-size: 13px;
             font-weight: 600;
             line-height: 13px;
-            color: #1E1E1E;
+            color: $primary-font-color;
             margin: 0 0 0 10px;
         }
     }

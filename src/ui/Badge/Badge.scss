@@ -1,13 +1,15 @@
+@import '../../variables.scss';
+
 .badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #3369F3;
+    background-color: $primary-color;
     border-radius: 10px;
-    color: #FFF;
+    color: $white-color;
     font-size: 11px;
     font-weight: 500;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     line-height: 12px;
     padding: 0 7.5px;
     height: 20px;

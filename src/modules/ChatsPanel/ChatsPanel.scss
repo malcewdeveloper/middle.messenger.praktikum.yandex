@@ -1,9 +1,11 @@
+@import '../../variables.scss';
+
 .chats-panel {  
     background-color: #FBFBFB;
-    border-right: 1px solid #EAEAEA;
+    border-right: 1px solid $border-primary-color;
     max-width: 310px;
     height: 100vh;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     padding-top: 23px;
     overflow-y: auto;
 
@@ -15,11 +17,11 @@
         .chats-panel__button {
             background-color: transparent;
             border: none;
-            color: #999999;
+            color: $secondary-font-color;
             cursor: pointer;
             font-size: 12px;
             font-weight: 500;
-            font-family: "Inter", sans-serif;
+            font-family: $base-font;
             line-height: 12px;
             text-decoration: none;
 
@@ -28,16 +30,16 @@
                 content: '';
                 width: 6px;
                 height: 6px;
-                border-bottom: 1px solid #999999;
-                border-right: 1px solid #999999;
+                border-bottom: 1px solid $secondary-font-color;
+                border-right: 1px solid $secondary-font-color;
                 transform: rotate(-45deg);
             }
 
             &:hover {
-                color: #868686;
+                color: $hover-secondary-color;
 
                 &::after {
-                    border-color: #868686;
+                    border-color: $hover-secondary-color;
                 }
             }
         }
@@ -64,7 +66,7 @@
             }
             
             &:focus::placeholder {
-                color: #999999;
+                color: $secondary-font-color;
             }
         }
 

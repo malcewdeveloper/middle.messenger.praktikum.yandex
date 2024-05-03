@@ -1,9 +1,11 @@
+@import '../../variables.scss';
+
 .message {
     display: inline-block;
     background-color: #F8F8F8;
     border-radius: 0 12px 12px;
     font-size: 12px;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     font-weight: 500;
     line-height: 15px;
     max-width: 402px;
@@ -40,8 +42,8 @@
                     content: '';
                     width: 6px;
                     height: 4px;
-                    border-bottom: 1px solid #3369F3;
-                    border-left: 1px solid #3369F3;
+                    border-bottom: 1px solid $primary-color;
+                    border-left: 1px solid $primary-color;
                     transform: rotate(-45deg);
                 }
                 &::after {
@@ -49,7 +51,7 @@
                     content: '';
                     width: 6px;
                     height: 4px;
-                    border-bottom: 1px solid #3369F3;
+                    border-bottom: 1px solid $primary-color;
                     transform: translate(-4px) rotate(-45deg);
                 }
             }
@@ -57,7 +59,7 @@
             .message__time {
                 font-size: 9px;
                 line-height: 9px;
-                color: #999999;
+                color: $secondary-font-color;
             }
         }
     }
@@ -71,7 +73,7 @@
             .message__time {
                 font-size: 9px;
                 line-height: 9px;
-                color: #3369F3;
+                color: $primary-color;
             }
         }
     }
