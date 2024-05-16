@@ -1,4 +1,4 @@
-export default function clsx(classes) {
+export default function clsx(classes: string[]): string {
     const result = new Array();
 
     classes.forEach((item) => {
