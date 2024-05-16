@@ -1,7 +1,3 @@
-import Avatar from '../../assets/avatar.jpg';
-import Pin from '../../assets/pin.svg';
-import ArrowRight from '../../assets/arrow-right.svg';
-
 export const ChatPageContext = {
     chats: [
         {            
@@ -65,16 +61,16 @@ export const ChatPageContext = {
     avatar: {
         size: 'small',
         image: {
-            src: Avatar
+            src: '/src/assets/avatar.jpg'
         }
     },
     buttonStart: {
         className: 'bottom-panel__button bottom-panel__button-start',
-        iconStart: Pin
+        iconStart: '/src/assets/pin.svg'
     },
     buttonEnd: {
         className: 'bottom-panel__button buttom-panel__button-end',
-        iconStart: ArrowRight
+        iconStart: '/src/assets/arrow-right.svg'
     },
     title: 'Максим'
 }

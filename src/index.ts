@@ -6,8 +6,16 @@ import * as Layouts from './layouts';
 import Handlebars from 'handlebars';
 import './global.scss';
 
+interface Pages {
+    [path: string]: {
+        page: string;
+        context: {
+            [key: string]: any
+        }
+    };
+}
 
-const pages = {
+const pages: Pages = {
     '/': {
         page: Pages.PreviewPage,
         context: {}
@@ -44,7 +52,7 @@ const navigate = () => {
 
         return Handlebars.compile(page)(context);
     } else {
-        return Handlebars.compile(pages['/not-found'].page)();
+        return Handlebars.compile(pages['/not-found'].page)({});
     }
 }
 
@@ -55,5 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Handlebars.registerPartial(name, partial);
     });
 
-    root.innerHTML = navigate();
+    if(root) {
+        root.innerHTML = navigate();
+    }
 });

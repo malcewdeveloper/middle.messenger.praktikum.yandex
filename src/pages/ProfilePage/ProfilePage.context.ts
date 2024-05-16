@@ -1,10 +1,8 @@
-import Avatar from '../../assets/avatar.jpg';
-
 export const ProfilePageContext = {
     avatar: {
         size: 'big',
         image: {
-            src: Avatar,
+            src: '/src/assets/avatar.jpg',
             alt: 'Фотография пользователя'
         }
     },
