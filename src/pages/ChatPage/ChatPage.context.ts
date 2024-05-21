@@ -31,33 +31,33 @@ export const ChatPageContext = {
             lastMessageMe: true
         },
     ],
-    // messages: [
-    //     {
-    //         type: 'text',
-    //         content: {
-    //             text: 'Друзья, у меня для вас особенный выпуск новостей! Сегодня я успешно выполнил первый спринт в Яндекс Практикуме',
-    //         },
-    //         time: '11:50',
-    //         isMessageMe: false
-    //     },
-    //     {
-    //         type: 'text',
-    //         content: {
-    //             image: Avatar
-    //         },
-    //         time: '11:56',
-    //         isMessageMe: false
-    //     },
-    //     {
-    //         type: 'text',
-    //         content: {
-    //             text: 'Молодец! Так держать!'
-    //         },
-    //         time: '12:00',
-    //         isRead: true,
-    //         isMessageMe: true
-    //     }
-    // ],
+    messages: [
+        {
+            type: 'text',
+            content: {
+                text: 'Друзья, у меня для вас особенный выпуск новостей! Сегодня я успешно выполнил первый спринт в Яндекс Практикуме',
+            },
+            time: '11:50',
+            isMessageMe: false
+        },
+        {
+            type: 'text',
+            content: {
+                image: '/src/assets/avatar.jpg'
+            },
+            time: '11:56',
+            isMessageMe: false
+        },
+        {
+            type: 'text',
+            content: {
+                text: 'Молодец! Так держать!'
+            },
+            time: '12:00',
+            isRead: true,
+            isMessageMe: true
+        }
+    ],
     avatar: {
         size: 'small',
         image: {
