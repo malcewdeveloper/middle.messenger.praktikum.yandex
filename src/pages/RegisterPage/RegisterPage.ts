@@ -6,7 +6,7 @@ import template from "./RegisterPage.hbs?raw";
 
 interface IRegisterPageProps extends BlockProps {}
 
-const loginInput = new Input({
+const loginInput: Input = new Input({
     type: "text",
     placeholder: "ivanivanov",
     name: "login",
@@ -16,7 +16,7 @@ const loginInput = new Input({
     },
 });
 
-const passwordInput = new Input({
+const passwordInput: Input = new Input({
     type: "password",
     placeholder: "*******",
     name: "password",
@@ -26,7 +26,7 @@ const passwordInput = new Input({
     },
 });
 
-const phoneInput = new Input({
+const phoneInput: Input = new Input({
     type: "phone",
     placeholder: "+79099673030",
     name: "phone",
@@ -36,7 +36,7 @@ const phoneInput = new Input({
     },
 });
 
-const emailInput = new Input({
+const emailInput: Input = new Input({
     type: "email",
     placeholder: "pochta@yandex.ru",
     name: "email",
@@ -46,7 +46,7 @@ const emailInput = new Input({
     },
 });
 
-const nameInput = new Input({
+const nameInput: Input = new Input({
     type: "text",
     placeholder: "Иван",
     name: "first_name",
@@ -56,7 +56,7 @@ const nameInput = new Input({
     },
 });
 
-const surnameInput = new Input({
+const surnameInput: Input = new Input({
     type: "text",
     placeholder: "Иванов",
     name: "second_name",

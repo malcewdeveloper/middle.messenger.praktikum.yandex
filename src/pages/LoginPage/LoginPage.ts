@@ -6,7 +6,7 @@ import { TypePattern, validator } from "../../utils";
 
 interface ILoginPageProps extends BlockProps {}
 
-const loginInput = new Input({
+const loginInput: Input = new Input({
     type: "text",
     placeholder: "ivanivanov",
     name: "login",
@@ -16,7 +16,7 @@ const loginInput = new Input({
     },
 });
 
-const passwordInput = new Input({
+const passwordInput: Input = new Input({
     type: "password",
     placeholder: "••••••••••••",
     name: "password",
