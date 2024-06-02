@@ -1,9 +1,9 @@
-export default function clsx(classes: string[]): string {
-    const result = new Array();
+export function clsx(classes: string[]): string {
+    const result: string[] = [];
 
     classes.forEach((item) => {
-        if(item) result.push(item);
+        if (item) result.push(item);
     });
 
-    return result.join(' ');
+    return result.join(" ");
 }
