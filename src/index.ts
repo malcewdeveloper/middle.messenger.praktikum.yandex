@@ -1,69 +1,34 @@
-import * as Components from './components';
-import * as UI from './ui';
-import * as Modules from './modules';
-import * as Pages from './pages';
-import * as Layouts from './layouts';
-import Handlebars from 'handlebars';
-import './global.scss';
+import "./global.scss";
+import * as Pages from "./pages";
+import { Block, render } from "./core";
 
 interface Pages {
-    [path: string]: {
-        page: string;
-        context: {
-            [key: string]: any
-        }
-    };
+    [path: string]: Block;
 }
 
 const pages: Pages = {
-    '/': {
-        page: Pages.PreviewPage,
-        context: {}
-    },
-    '/main': {
-        page: Pages.ChatPage,
-        context: Pages.ChatPageContext
-    },
-    '/register': {
-        page: Pages.RegisterPage,
-        context: Pages.RegisterPageContext
-    },
-    '/login': {
-        page: Pages.LoginPage,
-        context: Pages.LoginPageContext
-    },
-    '/profile': {
-        page: Pages.ProfilePage,
-        context: Pages.ProfilePageContext
-    },
-    '/not-found': {
-        page: Pages.NotFound,
-        context: {}
-    },
-    '/error': {
-        page: Pages.Error,
-        context: Pages.ErrorContext
-    }
-}
+    "/": new Pages.PreviewPage({}),
+    "/main": new Pages.ChatPage({}),
+    "/register": new Pages.RegisterPage({}),
+    "/login": new Pages.LoginPage({}),
+    "/profile": new Pages.ProfilePage({}),
+    "/not-found": new Pages.NotFound({}),
+    "/error": new Pages.ErrorPage({
+        code: 500,
+        message: "Ошибка сервера, обратись к разработчику!",
+    }),
+};
 
 const navigate = () => {
-    if(pages[window.location.pathname]) {
-        const {page, context} = pages[window.location.pathname];
+    if (pages[window.location.pathname]) {
+        const page = pages[window.location.pathname];
 
-        return Handlebars.compile(page)(context);
+        render("#app", page);
     } else {
-        return Handlebars.compile(pages['/not-found'].page)({});
+        render("#app", pages["/not-found"]);
     }
-}
+};
 
-document.addEventListener('DOMContentLoaded', () => {
-    const root = document.getElementById('app');
-
-    Object.entries({...Components, ...UI, ...Modules, ...Layouts}).forEach(([name, partial]) => {
-        Handlebars.registerPartial(name, partial);
-    });
-
-    if(root) {
-        root.innerHTML = navigate();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    navigate();
 });
