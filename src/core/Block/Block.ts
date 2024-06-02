@@ -90,9 +90,9 @@ export default class Block<T extends BlockProps = BlockProps> {
 
         Object.keys(propsAndChildren).forEach((key) => {
             if (propsAndChildren[key] instanceof Block) {
-                children[key] = propsAndChildren[key];
+                children[key] = propsAndChildren[key] as Block;
             } else if (Array.isArray(propsAndChildren[key])) {
-                lists[key] = propsAndChildren[key];
+                lists[key] = propsAndChildren[key] as unknown[];
             } else {
                 props[key] = propsAndChildren[key];
             }
@@ -165,8 +165,8 @@ export default class Block<T extends BlockProps = BlockProps> {
         this._eventBus.emit(Block.EVENTS.CDM);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     componentDidUpdate(oldProps: T, newProps: T) {
+        console.log(oldProps, newProps);
         return true;
     }
 
