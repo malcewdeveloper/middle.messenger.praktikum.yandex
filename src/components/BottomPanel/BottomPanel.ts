@@ -30,14 +30,14 @@ export default class BottomPanel extends Block {
         super({
             ...props,
             buttonStart: new Button({
-                iconStart: "src/assets/pin.svg",
+                iconStart: "src/public/images/pin.svg",
                 attributes: {
                     class: "bottom-panel__button bottom-panel__button-start",
                 },
             }),
             Input: messageInput,
             buttonEnd: new Button({
-                iconStart: "src/assets/arrow-right.svg",
+                iconStart: "src/public/images/arrow-right.svg",
                 attributes: {
                     class: "bottom-panel__button buttom-panel__button-end",
                 },

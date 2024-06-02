@@ -94,7 +94,7 @@ export default class ProfilePage extends Block {
             ...props,
             avatar: new Avatar({
                 image: {
-                    src: "src/assets/avatar.jpg",
+                    src: "src/public/images/avatar.jpg",
                     alt: "User avatar",
                 },
                 attributes: {
