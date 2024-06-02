@@ -1,6 +1,7 @@
 type EventName = string;
 
-type CallbackType = (...args: unknown[]) => void;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type CallbackType = (...args: any[]) => void;
 
 export default class EventBus {
     private readonly listeners: Record<EventName, CallbackType[]>;
