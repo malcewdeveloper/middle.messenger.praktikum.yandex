@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables";
 
 .input {
     display: flex;
@@ -10,12 +10,14 @@
     line-height: 13px;
     height: 51px;
     box-sizing: border-box;
+    width: 100%;
 
     .input__label {
         color: $secondary-font-color;
         margin-bottom: 8px;
     }
-    .input__input {
+
+    .input-base {
         background-color: transparent;
         border: none;
         border-bottom: 1px solid $primary-color;
@@ -25,5 +27,11 @@
         &:focus {
             border-bottom-width: 2px;
         }
+    }
+
+    .input__error {
+        color: rgb(235 44 44);
+        font-size: 12px;
+        margin: 5px 0 0;
     }
 }

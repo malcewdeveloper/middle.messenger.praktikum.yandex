@@ -1,9 +1,9 @@
-{{#> PageLayout className="register"}}
-    {{#> Form}}
-        {{#each inputs as |input|}}
-            {{> Input input=input}}
-        {{/each}}
-        {{> Button}}
-        <div class="register__action">Уже есть аккаунт? <a class="register__link" href="/login">Войти</a></div>
-    {{/Form}}
-{{/PageLayout}}
+<main>
+    <section class="register" id="register">
+            <div class="register__content">
+                {{{form}}}
+                <div class="register__action">Уже есть аккаунт? <a class="register__link" href="/login">Войти</a></div>
+                {{#if error}}<p class="register__error">{{{errorMessage}}}</p>{{/if}}
+            </div>
+    </section>
+</main>

@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables";
 
 #login {
     display: flex;
@@ -6,19 +6,36 @@
     justify-content: center;
     height: 100vh;
 
-    .login__actions {
-        font-size: 11px;
-        font-weight: 500;
-        line-height: 11px;
-        text-align: center;
+    .login__content {
+        width: 100%;
+        max-width: 340px;
+        box-shadow: 0 0 6px #00000024;
+        border-radius: 12px;
+        padding: 30px;
 
-        .login__link {
-            color: $primary-color;
-            text-decoration: none;
-
-            &:hover {
-                color: $hover-primary-color;
+        .login__actions {
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 11px;
+            text-align: center;
+            margin-top: 8px;
+    
+            .login__link {
+                color: $primary-color;
+                text-decoration: none;
+    
+                &:hover {
+                    color: $hover-primary-color;
+                }
             }
         }
+
+        .login__error {
+            color: rgb(235 45 45);
+            font-size: 12px;
+            margin: 8px 0 0;
+            text-align: center;
+        }
     }
+
 }

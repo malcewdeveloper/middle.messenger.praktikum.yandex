@@ -1,7 +1,7 @@
-<div data-size="{{avatar.size}}" class="avatar">
+<div class="avatar">
     <div class="avatar__placeholder">
-        {{#if avatar.image}}
-            <img class="avatar__image" src="{{avatar.image.src}}" alt="{{avatar.image.alt}}" />
+        {{#if image}}
+            <img class="avatar__image" src="{{{image.src}}}" alt="{{{image.alt}}}" />
         {{/if}}
     </div>
 </div>

@@ -1,5 +1,7 @@
 <div class="bottom-panel">
-    {{> Button button=buttonStart}}
-    <input class="bottom-panel__input" type="text" name="message" placeholder="Сообщение" />
-    {{> Button button=buttonEnd}}
+    {{{buttonStart}}}
+    <form class="bottom-panel__form">
+        {{{Input}}}
+        {{{buttonEnd}}}
+    </form>
 </div>

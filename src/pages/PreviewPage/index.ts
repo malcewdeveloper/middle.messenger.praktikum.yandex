@@ -1,2 +1,2 @@
-import './PreviewPage.scss';
-export { default as PreviewPage } from './PreviewPage.hbs?raw';
+import "./PreviewPage.scss";
+export { default as PreviewPage } from "./PreviewPage";

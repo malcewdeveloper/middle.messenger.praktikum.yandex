@@ -1,2 +1,2 @@
-export * from './ChatsPanel';
-export * from './ChatPreview';
+export * from "./ChatsPanel";
+export * from "./ChatPreview";

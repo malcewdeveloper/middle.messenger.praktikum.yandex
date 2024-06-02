@@ -1,0 +1,13 @@
+@import "../../variables";
+
+.input-base {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $primary-color;
+    height: 26px;
+    outline: none;
+
+    &:focus {
+        border-bottom-width: 2px;
+    }
+}

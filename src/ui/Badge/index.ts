@@ -1,2 +1,2 @@
-import './Badge.scss';
-export { default as Badge } from './Badge.hbs?raw';
+import "./Badge.scss";
+export { default as Badge } from "./Badge";
