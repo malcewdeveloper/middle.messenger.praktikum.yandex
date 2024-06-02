@@ -1,0 +1,11 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "selector-class-pattern": null,
+        "color-hex-length": null
+    },
+    "ignoreFiles": [
+        "dist/*",
+        "node_modules/*"
+    ]
+}
