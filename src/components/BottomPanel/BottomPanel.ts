@@ -2,6 +2,8 @@ import { Block, type BlockProps } from "../../core/Block";
 import { BaseInput, Button } from "../../ui";
 import { TypePattern, validator } from "../../utils";
 import template from "./BottomPanel.hbs?raw";
+import ArrowRight from "../../public/images/arrow-right.svg";
+import Pin from "../../public/images/pin.svg";
 
 interface IBottomPanelProps extends BlockProps {}
 
@@ -30,14 +32,14 @@ export default class BottomPanel extends Block {
         super({
             ...props,
             buttonStart: new Button({
-                iconStart: "src/public/images/pin.svg",
+                iconStart: Pin,
                 attributes: {
                     class: "bottom-panel__button bottom-panel__button-start",
                 },
             }),
             Input: messageInput,
             buttonEnd: new Button({
-                iconStart: "src/public/images/arrow-right.svg",
+                iconStart: ArrowRight,
                 attributes: {
                     class: "bottom-panel__button buttom-panel__button-end",
                 },
