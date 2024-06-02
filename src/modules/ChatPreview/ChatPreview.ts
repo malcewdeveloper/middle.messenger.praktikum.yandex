@@ -2,13 +2,14 @@ import { BottomPanel, TopPanel } from "../../components";
 import { Block, type BlockProps } from "../../core/Block";
 import { Message } from "../../ui";
 import template from "./ChatPreview.hbs?raw";
+import AvatarImage from "../../public/images/avatar.jpg";
 
 interface IChatPreviewProps extends BlockProps {}
 
 const messages = [
     {
         content: {
-            image: "src/assets/avatar.jpg",
+            image: AvatarImage,
             text: "Привет! Я успешно завершил второй сприн",
         },
         time: "16:10",

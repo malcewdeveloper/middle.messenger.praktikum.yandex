@@ -3,6 +3,7 @@ import { Avatar, Button } from "../../ui";
 import { Input } from "../../components";
 import template from "./ProfilePage.hbs?raw";
 import { TypePattern, validator } from "../../utils";
+import AvatarImage from "../../public/images/avatar.jpg";
 
 interface IProfilePageProps extends BlockProps {}
 
@@ -94,7 +95,7 @@ export default class ProfilePage extends Block {
             ...props,
             avatar: new Avatar({
                 image: {
-                    src: "src/public/images/avatar.jpg",
+                    src: AvatarImage,
                     alt: "User avatar",
                 },
                 attributes: {
