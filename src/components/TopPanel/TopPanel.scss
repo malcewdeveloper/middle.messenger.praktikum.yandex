@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables";
 
 .top-panel {
     display: flex;
@@ -27,16 +27,16 @@
         justify-content: center;
         border: none;
         background-color: transparent;
-        cursor: pointer; 
+        cursor: pointer;
         padding: 0;
         margin-right: 11px;
         width: 20px;
         height: 20px;
-        height: auto;   
+        height: auto;
 
         &::before {
             display: inline-block;
-            content: url(../../assets/dots.svg);
+            content: url("../../assets/dots.svg");
             width: 3px;
             height: 15px;
         }

@@ -1,16 +1,17 @@
-<div class="message {{#if message.isMessageMe}}message_me{{/if}}" data-type="{{message.type}}">
-    {{#if message.content.image}}
+<div class="message">
+    {{#if content.image}}
         <div class="message__image-wrapper">
-            <img class="message__image" src="{{message.content.image}}" alt="Image description">
+            <img class="message__image" src="{{{content.image}}}" alt="Image description">
         </div>
     {{/if}}
     <div class="message__content">
-        {{message.content.text}}
+        {{content.text}}
         <div class="message__info">
-            {{#if message.isMessageMe}}
-                {{#if message.isRead}}<span class="message__read"></span>{{/if}}
+            {{#if isMessageMe}}
+                {{#if isRead}}<span class="message__read"></span>{{/if}}
             {{/if}}
-            <span class="message__time">{{message.time}}</span>
+            <span class="message__time">{{time}}</span>
         </div>
     </div>
 </div>
+

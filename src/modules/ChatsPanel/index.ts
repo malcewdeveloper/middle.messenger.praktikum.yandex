@@ -1,2 +1,2 @@
-import './ChatsPanel.scss';
-export { default as ChatsPanel } from './ChatsPanel.hbs?raw';
+import "./ChatsPanel.scss";
+export { default as ChatsPanel } from "./ChatsPanel";

@@ -9,8 +9,6 @@
         <button class="chats-panel__search-button"></button>
     </form>
     <ul class="chats-panel__list">
-        {{#each chats as | chat |}}
-            <li class="chats-panel__item">{{> Chat chat=chat}}</li>
-        {{/each}}
+        {{{chats}}}
     </ul>
 </aside>

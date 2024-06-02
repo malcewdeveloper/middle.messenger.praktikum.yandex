@@ -1,3 +1,2 @@
-import './RegisterPage.scss';
-export * from './RegisterPage.context';
-export { default as RegisterPage } from './RegisterPage.hbs?raw';
+import "./RegisterPage.scss";
+export { default as RegisterPage } from "./RegisterPage";

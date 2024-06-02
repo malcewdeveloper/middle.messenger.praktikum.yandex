@@ -1,3 +1,2 @@
-import './ProfilePage.scss';
-export * from './ProfilePage.context';
-export { default as ProfilePage } from './ProfilePage.hbs?raw';
+import "./ProfilePage.scss";
+export { default as ProfilePage } from "./ProfilePage";

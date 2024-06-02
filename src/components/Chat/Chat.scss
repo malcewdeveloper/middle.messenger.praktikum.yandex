@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables";
 
 .chat {
     display: grid;
@@ -19,6 +19,7 @@
             line-height: 13px;
             margin-bottom: 4px;
         }
+
         .chat__preview {
             display: -webkit-box;
             font-size: 12px;

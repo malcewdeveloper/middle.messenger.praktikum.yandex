@@ -1,21 +1,18 @@
 <div class="chat-preview">
-
     {{#unless messages}}
         <div class="chat-preview__nochat">Выберите чат чтобы отправить сообщение</div>
     {{else}}
         <div class="chat-preview__header">
-            {{> TopPanel}}
+            {{{topPanel}}}
         </div>
         <div class="chat-preview__content">
             <div class="chat-preview__date">30 апреля</div>
             <div class="chat-preview__messages">
-                {{#each messages as |message|}}
-                    {{> Message message=message}}
-                {{/each}}
+                    {{{messages}}}
             </div>
         </div>
         <div class="chat-preview__footer">
-            {{> BottomPanel}}
+            {{{bottomPanel}}}
         </div>
     {{/unless}}
 </div>
