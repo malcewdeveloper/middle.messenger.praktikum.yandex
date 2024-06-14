@@ -1,13 +1,14 @@
 <div class="chat">
-    {{> Avatar avatar=chat.avatar}}
+    {{{avatar}}}
     <div class="chat__content">
-        <div class="chat__title">{{chat.title}}</div>
+        <div class="chat__title">{{{title}}}</div>
         <div class="chat__preview">
-            {{#if chat.lastMessageMe}}<span class="chat__preview-me">Вы: </span>{{/if}}{{chat.preview}}
+            {{#if lastMessageMe}}<span class="chat__preview-me">Вы:
+                </span>{{/if}}{{{preview}}}
         </div>
     </div>
     <div class="chat__info">
-        <div class="chat__date">{{chat.date}}</div>
-        {{> Badge badge=chat.badge}}
+        <div class="chat__date">{{{date}}}</div>
+        {{{unreadMessages}}}
     </div>
 </div>

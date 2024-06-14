@@ -1,9 +1,11 @@
-.chats-panel {  
-    background-color: #FBFBFB;
-    border-right: 1px solid #EAEAEA;
+@import "../../variables";
+
+.chats-panel {
+    background-color: #fbfbfb;
+    border-right: 1px solid $border-primary-color;
     max-width: 310px;
     height: 100vh;
-    font-family: "Inter", sans-serif;
+    font-family: $base-font;
     padding-top: 23px;
     overflow-y: auto;
 
@@ -15,29 +17,29 @@
         .chats-panel__button {
             background-color: transparent;
             border: none;
-            color: #999999;
+            color: $secondary-font-color;
             cursor: pointer;
             font-size: 12px;
             font-weight: 500;
-            font-family: "Inter", sans-serif;
+            font-family: $base-font;
             line-height: 12px;
             text-decoration: none;
 
             &::after {
                 display: inline-block;
-                content: '';
+                content: "";
                 width: 6px;
                 height: 6px;
-                border-bottom: 1px solid #999999;
-                border-right: 1px solid #999999;
+                border-bottom: 1px solid $secondary-font-color;
+                border-right: 1px solid $secondary-font-color;
                 transform: rotate(-45deg);
             }
 
             &:hover {
-                color: #868686;
+                color: $hover-secondary-color;
 
                 &::after {
-                    border-color: #868686;
+                    border-color: $hover-secondary-color;
                 }
             }
         }
@@ -48,7 +50,7 @@
         margin: 0 10px 14px;
 
         .chats-panel__input {
-            background-color: #EFEFEF;
+            background-color: #efefef;
             border-radius: 5px;
             padding-left: 24px;
             font-size: 12px;
@@ -62,9 +64,9 @@
             &::placeholder {
                 color: transparent;
             }
-            
+
             &:focus::placeholder {
-                color: #999999;
+                color: $secondary-font-color;
             }
         }
 
@@ -86,18 +88,18 @@
             pointer-events: none;
 
             &::before {
-                content: url(../../assets/search.svg);
+                content: url("../../public/images/search.svg");
                 width: 20px;
                 height: 20px;
             }
 
             &::after {
-                content: 'Поиск';
+                content: "Поиск";
             }
         }
 
         .chats-panel__input:focus + .chats-panel__search-button {
-            left: 0px;
+            left: 0;
             pointer-events: unset;
             transform: translate(-3px, -50%);
             transition: left 0.2s ease;
@@ -107,17 +109,18 @@
             }
         }
 
-        .chats-panel__input:not(:placeholder-shown) + .chats-panel__search-button {
-            left: 0px;
+        .chats-panel__input:not(:placeholder-shown)
+            + .chats-panel__search-button {
+            left: 0;
             pointer-events: unset;
             transform: translate(-3px, -50%);
             transition: left 0.2s ease;
         }
 
-        .chats-panel__input:not(:placeholder-shown) + .chats-panel__search-button::after {
+        .chats-panel__input:not(:placeholder-shown)
+            + .chats-panel__search-button::after {
             content: none;
         }
-
     }
 
     .chats-panel__list {
@@ -129,12 +132,12 @@
             padding: 0 10px;
 
             &:hover {
-                background-color: #E4EDFD;
+                background-color: #e4edfd;
             }
         }
     }
 
-    @media (max-width: 767px) {
+    @media (width <= 767px) {
         & {
             max-width: unset;
             width: 100%;

@@ -1,3 +1,5 @@
+@import "../../variables";
+
 #error {
     display: flex;
     align-items: center;
@@ -5,7 +7,7 @@
     height: 100vh;
 
     .error__content {
-        color: #1E1E1E;
+        color: $primary-font-color;
         text-align: center;
 
         .error__title {
@@ -13,18 +15,18 @@
             font-weight: 500;
             line-height: 40px;
         }
-    
+
         .error__text {
             font-size: 20px;
             font-weight: 500;
             line-height: 20px;
         }
-    
+
         .error__link {
             font-size: 11px;
             font-weight: 500;
             line-height: 11px;
-            color: #3369F3;
+            color: $primary-color;
             text-decoration: none;
         }
     }
