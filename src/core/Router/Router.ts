@@ -55,7 +55,10 @@ export default class Router {
     }
 
     getRoute(pathname: string) {
-        return this.routes.find((route) => route.match(pathname));
+        return (
+            this.routes.find((route) => route.match(pathname)) ??
+            this.routes.find((route) => route.match("/not-found"))
+        );
     }
 
     go(pathname: string) {
