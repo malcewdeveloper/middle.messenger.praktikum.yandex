@@ -18,7 +18,9 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, "method">;
 
-type HTTPResponse = Promise<XMLHttpRequest>;
+
+type HttpMethod = <R = unknown>(url: string, options?: OptionsWithoutMethod) => Promise<R>;
+
 
 export default class HTTPTransport {
     private _url?: string;
@@ -27,7 +29,7 @@ export default class HTTPTransport {
         this._url = `${API_URL}${url}`;
     }
 
-    get(url: string, options?: OptionsWithoutMethod): HTTPResponse {
+    get: HttpMethod = (url, options) => {
         return this._request(
             url,
             { ...options, method: "GET" },
@@ -35,7 +37,7 @@ export default class HTTPTransport {
         );
     }
 
-    post(url: string, options: OptionsWithoutMethod): HTTPResponse {
+    post: HttpMethod = (url, options) => {
         return this._request(
             url,
             { ...options, method: "POST" },
@@ -43,7 +45,7 @@ export default class HTTPTransport {
         );
     }
 
-    put(url: string, options: OptionsWithoutMethod): HTTPResponse {
+    put: HttpMethod = (url, options) => {
         return this._request(
             url,
             { ...options, method: "PUT" },
@@ -51,7 +53,7 @@ export default class HTTPTransport {
         );
     }
 
-    delete(url: string, options: OptionsWithoutMethod): HTTPResponse {
+    delete: HttpMethod = (url, options) => {
         return this._request(
             url,
             { ...options, method: "DELETE" },
@@ -59,14 +61,14 @@ export default class HTTPTransport {
         );
     }
 
-    private _request = (
+    private _request = <TResponse = unknown>(
         url: string,
         options: Options,
         timeout: number = 5000,
-    ): HTTPResponse => {
+    ) => {
         const { data, headers, method = "GET" } = options;
 
-        return new Promise((resolve, reject) => {
+        return new Promise<TResponse>((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             const isGet = method === METHODS.GET;
 
@@ -84,7 +86,14 @@ export default class HTTPTransport {
             }
 
             xhr.onload = () => {
-                resolve(xhr);
+                if (xhr.status !== 200) {
+					reject(xhr.responseText);
+				}
+				if (xhr.response === 'OK') {
+					resolve(xhr.response as TResponse);
+				} else {
+					resolve(JSON.parse(xhr.response) as TResponse);
+				}
             };
 
             xhr.onabort = reject;
