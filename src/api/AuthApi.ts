@@ -1,15 +1,14 @@
 import {
-    LoginSubmitData,
-    RegisterUserSubmitData,
-    RegisterUserResponseData,
-    User,
+    ILoginData,
+    IRegisterData,
+    IUser,
 } from "../interfaces";
 import { HTTPTransport } from "../core";
 
 const authApi = new HTTPTransport("/auth");
 
 export class AuthApi {
-    async login(data: LoginSubmitData): Promise<void | Error> {
+    async login(data: ILoginData): Promise<void | Error> {
         return authApi.post("/signin", {
             headers: {
                 "Content-Type": "application/json",
@@ -19,8 +18,8 @@ export class AuthApi {
     }
 
     async register(
-        data: RegisterUserSubmitData,
-    ): Promise<RegisterUserResponseData> {
+        data: IRegisterData,
+    ): Promise<{ id: number }> {
         return authApi.post("/signup", {
             headers: {
                 "Content-Type": "application/json",
@@ -33,7 +32,7 @@ export class AuthApi {
         return authApi.post("/logout", {});
     }
 
-    async getUser(): Promise<User | Error> {
+    async getUser(): Promise<IUser | Error> {
         return authApi.get("/user");
     }
 }
