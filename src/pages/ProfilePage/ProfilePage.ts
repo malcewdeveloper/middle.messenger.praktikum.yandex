@@ -76,7 +76,7 @@ const inputs = [loginInput, phoneInput, emailInput, nameInput, surnameInput];
 
 class _ProfilePage extends Block {
     constructor(props: IProfilePageProps) {
-        const modal = new Modal({
+        const modal: Modal = new Modal({
             title: "Замена пароля",
             children: [
                 new UpdatePassword({

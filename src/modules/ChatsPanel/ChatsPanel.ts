@@ -30,7 +30,7 @@ class ChatItem extends Block {
 
 class _ChatsPanel extends Block<IChatsPanelProps> {
     constructor(props: IChatsPanelProps) {
-        const modal = new Modal({
+        const modal: Modal = new Modal({
             title: "Добавить новый чат",
             children: [
                 new CreateChat({
