@@ -7,3 +7,4 @@ export * from "./AddUser";
 export * from "./Dropdown";
 export * from "./UpdatePassword";
 export * from "./FileInput";
+export * from "./DeleteUser";
