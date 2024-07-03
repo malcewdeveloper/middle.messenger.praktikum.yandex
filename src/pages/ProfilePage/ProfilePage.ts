@@ -1,9 +1,11 @@
 import { Block, type BlockProps } from "../../core/Block";
-import { Avatar, Button } from "../../ui";
-import { Input } from "../../components";
-import template from "./ProfilePage.hbs?raw";
+import { Avatar, Button, Modal } from "../../ui";
+import { FileInput, Input, UpdatePassword } from "../../components";
+import { connect } from "../../core";
 import { TypePattern, validator } from "../../utils";
-import AvatarImage from "../../public/images/avatar.jpg";
+import { changeAvatar, logout, updateProfile } from "../../services";
+import { IUser } from "../../interfaces";
+import template from "./ProfilePage.hbs?raw";
 
 interface IProfilePageProps extends BlockProps {}
 
@@ -22,21 +24,11 @@ class ProfileItem extends Block {
 
 const loginInput: Input = new Input({
     type: "text",
-    placeholder: "ivanivanov",
+    placeholder: "ivanovivanov",
     name: "login",
     label: "Логин",
     events: {
         blur: (e) => loginInput.handleBlur(e, "login"),
-    },
-});
-
-const passwordInput: Input = new Input({
-    type: "password",
-    placeholder: "*******",
-    name: "password",
-    label: "Пароль",
-    events: {
-        blur: (e) => passwordInput.handleBlur(e, "password"),
     },
 });
 
@@ -80,29 +72,25 @@ const surnameInput: Input = new Input({
     },
 });
 
-export default class ProfilePage extends Block {
+const inputs = [loginInput, phoneInput, emailInput, nameInput, surnameInput];
+
+class _ProfilePage extends Block {
     constructor(props: IProfilePageProps) {
-        const inputs = [
-            loginInput,
-            passwordInput,
-            phoneInput,
-            emailInput,
-            nameInput,
-            surnameInput,
-        ];
+        const modal = new Modal({
+            title: "Замена пароля",
+            children: [
+                new UpdatePassword({
+                    onSubmit: () => modal.hide(),
+                }),
+            ],
+        });
+
+        const fileInput = new FileInput({
+            onChange: (file) => this.handleFileChange(file),
+        });
 
         super({
             ...props,
-            avatar: new Avatar({
-                image: {
-                    src: AvatarImage,
-                    alt: "User avatar",
-                },
-                attributes: {
-                    class: "avatar",
-                    "data-size": "big",
-                },
-            }),
             inputs: inputs.map(
                 (input) =>
                     new ProfileItem({
@@ -115,31 +103,47 @@ export default class ProfilePage extends Block {
                     attributes: {
                         class: "button profile__actions-item profile__button",
                     },
+                    events: {
+                        click: () => {
+                            modal.show();
+                        },
+                    },
                 }),
                 new Button({
                     text: "Выйти",
                     attributes: {
                         class: "button profile__actions-item profile__button profile__button_error",
                     },
+                    events: {
+                        click: async () => {
+                            await logout();
+                        },
+                    },
                 }),
+                modal,
             ],
+            Button: new Button({
+                text: "Поменять аватар",
+                attributes: {
+                    class: "profile__overlay-text",
+                },
+                events: {
+                    click: () => fileInput.getContent().click(),
+                },
+            }),
+            Input: fileInput,
             events: {
                 submit: (e) => this.handleSubmit(e),
             },
         });
     }
 
-    handleSubmit(e: SubmitEvent) {
-        e.preventDefault();
+    async handleFileChange(file: File) {
+        await changeAvatar(file);
+    }
 
-        const inputs = [
-            loginInput,
-            passwordInput,
-            phoneInput,
-            emailInput,
-            nameInput,
-            surnameInput,
-        ];
+    async handleSubmit(e: SubmitEvent) {
+        e.preventDefault();
 
         const result: Record<string, string> = {};
         let isAllCheckSuccess = true;
@@ -172,7 +176,7 @@ export default class ProfilePage extends Block {
         });
 
         isAllCheckSuccess
-            ? console.log(result)
+            ? await updateProfile(result as unknown as IUser)
             : console.log("Validation error");
     }
 
@@ -180,3 +184,20 @@ export default class ProfilePage extends Block {
         return this.compile(template, this._props);
     }
 }
+
+const ProfilePage = connect((state) => ({
+    user: state.user,
+    avatar: new Avatar({
+        image: {
+            src: `https://ya-praktikum.tech/api/v2/resources/${state.user?.avatar}`,
+            alt: "Аватар",
+        },
+        attributes: {
+            class: "avatar",
+            "data-size": "big",
+        },
+    }),
+    name: `${state.user?.first_name} ${state.user?.second_name}`,
+}))(_ProfilePage as typeof Block);
+
+export default ProfilePage;

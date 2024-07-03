@@ -3,6 +3,10 @@ import { Button, Form } from "../../ui";
 import { Input } from "../../components";
 import template from "./LoginPage.hbs?raw";
 import { TypePattern, validator } from "../../utils";
+import { connect } from "../../core";
+import { login } from "../../services";
+import { getChats } from "../../services";
+import { ILoginData } from "../../interfaces";
 
 interface ILoginPageProps extends BlockProps {}
 
@@ -26,7 +30,7 @@ const passwordInput: Input = new Input({
     },
 });
 
-export default class LoginPage extends Block {
+class _LoginPage extends Block {
     constructor(props: ILoginPageProps) {
         super({
             ...props,
@@ -38,6 +42,7 @@ export default class LoginPage extends Block {
                         text: "Войти",
                         attributes: {
                             class: "button",
+                            type: "submit",
                         },
                     }),
                 ],
@@ -83,12 +88,27 @@ export default class LoginPage extends Block {
             result[el.name] = el.value;
         });
 
-        isAllCheckSuccess
-            ? console.log(result)
-            : console.log("Validation error");
+        if (!isAllCheckSuccess) {
+            throw Error("Validation error");
+        }
+
+        login(result as unknown as ILoginData)
+            .then(async () => await getChats())
+            .catch((err) =>
+                this.setProps({
+                    error: true,
+                    errorMessage: err.message,
+                }),
+            );
     }
 
     render() {
         return this.compile(template, this._props);
     }
 }
+
+const LoginPage = connect((state) => ({ user: state.user }))(
+    _LoginPage as typeof Block,
+);
+
+export default LoginPage;

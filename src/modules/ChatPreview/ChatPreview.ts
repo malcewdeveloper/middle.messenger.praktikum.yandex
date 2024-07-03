@@ -1,52 +1,21 @@
 import { BottomPanel, TopPanel } from "../../components";
 import { Block, type BlockProps } from "../../core/Block";
 import { Message } from "../../ui";
+import { connect } from "../../core";
 import template from "./ChatPreview.hbs?raw";
-import AvatarImage from "../../public/images/avatar.jpg";
 
 interface IChatPreviewProps extends BlockProps {}
 
-const messages = [
-    {
-        content: {
-            image: AvatarImage,
-            text: "Привет! Я успешно завершил второй сприн",
-        },
-        time: "16:10",
-        isRead: true,
-        isMessageMe: true,
-    },
-    {
-        content: {
-            image: null,
-            text: "Привет! Вау это правда круто, ты молодец!",
-        },
-        time: "16:20",
-        isRead: true,
-        isMessageMe: false,
-    },
-];
-
-export default class ChatPreview extends Block {
+class _ChatPreview extends Block {
     constructor(props: IChatPreviewProps) {
         super({
             ...props,
             topPanel: new TopPanel({
-                title: "Maksim",
                 attributes: {
                     class: "top-panel",
                 },
             }),
             bottomPanel: new BottomPanel({}),
-            messages: messages.map(
-                (message) =>
-                    new Message({
-                        ...message,
-                        attributes: {
-                            class: `message${message.isMessageMe ? " message_me" : ""}`,
-                        },
-                    }),
-            ),
         });
     }
 
@@ -54,3 +23,24 @@ export default class ChatPreview extends Block {
         return this.compile(template, this._props);
     }
 }
+
+const ChatPreview = connect((state) => ({
+    user: state.user,
+    messages: state.messages?.map(
+        (message) =>
+            new Message({
+                content: {
+                    text: message.content,
+                    image: message.file ? message.file.path : null,
+                },
+                time: message.time,
+                isRead: false,
+                isMessageMe: true,
+                attributes: {
+                    class: `message ${state.user.id === message.user_id ? " message_me" : ""}`,
+                },
+            }),
+    ),
+}))(_ChatPreview as typeof Block);
+
+export default ChatPreview;

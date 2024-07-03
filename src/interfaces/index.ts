@@ -1,9 +1,9 @@
-export interface LoginSubmitData {
+export interface ILoginData {
     login: string;
     password: string;
 }
 
-export interface RegisterUserSubmitData {
+export interface IRegisterData {
     email: string;
     login: string;
     first_name: string;
@@ -12,118 +12,36 @@ export interface RegisterUserSubmitData {
     password: string;
 }
 
-export interface RegisterUserResponseData {
-    id: number;
-}
-
-export interface ChatUser {
-    id: number;
-    first_name: string;
-    second_name: string;
-    avatar: string;
-    email: string;
-    login: string;
-    role: string;
-}
-
-export interface ChatType {
-    id: number;
-    title: string;
-    avatar: string;
-    unread_count: number;
-    created_by: number;
-    last_message: {
-        user: {
-            first_name: string;
-            second_name: string;
-            avatar: string;
-            email: string;
-            login: string;
-            phone: string;
-        };
-        time: string;
-        content: string;
-    };
-}
-
-export interface CreateChatSubmitData {
+export interface ICreateChatData {
     title: string;
 }
 
-export interface CreateChatResponseData {
-    id: number;
-}
-
-export interface DeleteChatSubmitData {
+export interface IDeleteChatData {
     chatId: number;
 }
 
-export interface GetChatUsersRequest {
-    chatId: number;
-    offset?: number;
-    limit?: number;
-    name?: string;
-    email?: string;
-}
-
-export interface DeleteChatResponseData {
-    userId: number;
-    result: {
-        id: number;
-        title: string;
-        avatar: string;
-        created_by: number;
-    };
-}
-
-export interface GetChatTokenRequest {
-    id: number;
-}
-
-export interface GetChatTokenResponseData {
-    token: string;
-}
-
-export interface ChangeChatAvatarSubmitData {
-    chatId: number;
-    file: File;
-}
-
-export interface AddUsersToChatSubmitData {
+export interface IAddUserData {
     chatId: number;
     users: number[];
 }
 
-export interface DeleteUsersFromChatSubmitData {
+export interface IDeleteUserData {
     chatId: number;
     users: number[];
 }
 
-export interface GetCommonChatRequest {
+export interface IChangePasswordData {
+    oldPassword: string;
+    newPassword: string;
+}
+
+export type IUpdateUserData = Omit<IUser, "id" | "avatar">;
+
+export interface IChatTokenData {
     id: number;
 }
 
-export interface NewMessagesResponse {
-    chat_id: number;
-    content: string | null;
-    file: File | null;
-    id: number;
-    is_read: boolean;
-    time: string;
-    type: string;
-    user_id: number;
-}
-
-export interface UserProfile {
-    first_name: string;
-    second_name: string;
-    display_name: string;
-    login: string;
-    email: string;
-    phone: string;
-}
-
-export interface User {
+export interface IUser {
     id: number;
     first_name: string;
     second_name: string;
@@ -134,15 +52,33 @@ export interface User {
     email: string;
 }
 
-export interface UserPasswordSubmitData {
-    oldPassword: string;
-    newPassword: string;
+export interface IChat {
+    id: number;
+    title: string;
+    avatar: string;
+    unread_count: number;
+    created_by: number;
+    last_message: {
+        id: number;
+        user: IUser;
+        content: string;
+        time: string;
+    };
 }
 
-export type GetCommonChatResponseData = ChatType;
-
-export type ChatsList = ChatType[];
-
-export type GetChatUsersResponse = ChatUser[];
-
-export type ChangeChatAvatarResponseData = ChatType;
+export interface IMessage {
+    chat_id: IChat["id"];
+    time: string;
+    type: string;
+    user_id: IUser["id"];
+    content: string;
+    file?: {
+        id: number;
+        user_id: number;
+        path: string;
+        filename: string;
+        content_type: string;
+        content_size: number;
+        upload_url: string;
+    };
+}

@@ -1,13 +1,14 @@
 <main>
     <section class="profile" id="profile">
-        <a href="/" class="profile__link">Вернуться к чатам</a>
+        <a href="/messenger" class="profile__link">Вернуться к чатам</a>
         <div class="profile__header">
-            <div class="profile__avatar">
+            <form class="profile__avatar">
                 {{{avatar}}}
                 <div class="profile__overlay">
-                    <p class="profile__overlay-text">Поменять <br> аватар</p>
+                    {{{ Button }}}
                 </div>
-            </div>
+                {{{ Input }}}
+            </form>
             <h2 class="profile__title">{{{name}}}</h2>
         </div>
         <form class="profile__content">

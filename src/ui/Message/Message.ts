@@ -17,7 +17,7 @@ interface IMessageProps extends BlockProps {
 
 export default class Message extends Block {
     constructor(props: IMessageProps) {
-        super(props);
+        super({ ...props });
     }
 
     render() {

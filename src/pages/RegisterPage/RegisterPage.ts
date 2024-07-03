@@ -2,7 +2,10 @@ import { Block, type BlockProps } from "../../core/Block";
 import { Button, Form } from "../../ui";
 import Input from "../../components/Input/Input";
 import { TypePattern, validator } from "../../utils";
+import { register } from "../../services";
 import template from "./RegisterPage.hbs?raw";
+import { connect } from "../../core";
+import { IRegisterData } from "../../interfaces";
 
 interface IRegisterPageProps extends BlockProps {}
 
@@ -66,7 +69,7 @@ const surnameInput: Input = new Input({
     },
 });
 
-export default class RegisterPage extends Block {
+class _RegisterPage extends Block {
     constructor(props: IRegisterPageProps) {
         super({
             ...props,
@@ -138,12 +141,25 @@ export default class RegisterPage extends Block {
             result[el.name] = el.value;
         });
 
-        isAllCheckSuccess
-            ? console.log(result)
-            : console.log("Validation error");
+        if (!isAllCheckSuccess) {
+            return;
+        }
+
+        register(result as unknown as IRegisterData).catch((err) =>
+            this.setProps({
+                error: true,
+                errorMessage: err.message,
+            }),
+        );
     }
 
     render() {
         return this.compile(template, this._props);
     }
 }
+
+const RegisterPage = connect((state) => ({ user: state.user }))(
+    _RegisterPage as typeof Block,
+);
+
+export default RegisterPage;

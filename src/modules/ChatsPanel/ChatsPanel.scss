@@ -10,9 +10,21 @@
     overflow-y: auto;
 
     .chats-panel__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 0 10px;
         margin-bottom: 23px;
         text-align: end;
+
+        .chats-panel__button-create {
+            background-color: transparent;
+            color: $hover-secondary-color;
+            width: 30px;
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+        }
 
         .chats-panel__button {
             background-color: transparent;

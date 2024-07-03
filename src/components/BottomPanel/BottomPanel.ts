@@ -4,6 +4,7 @@ import { TypePattern, validator } from "../../utils";
 import template from "./BottomPanel.hbs?raw";
 import ArrowRight from "../../public/images/arrow-right.svg";
 import Pin from "../../public/images/pin.svg";
+import MessagesService from "../../services/MessagesService";
 
 interface IBottomPanelProps extends BlockProps {}
 
@@ -42,6 +43,7 @@ export default class BottomPanel extends Block {
                 iconStart: ArrowRight,
                 attributes: {
                     class: "bottom-panel__button buttom-panel__button-end",
+                    type: "submit",
                 },
             }),
             attributes: {
@@ -66,7 +68,7 @@ export default class BottomPanel extends Block {
             return;
         }
 
-        console.log({ [el.name]: el.value });
+        MessagesService.sendMessage(el.value);
 
         el.value = "";
     }

@@ -3,7 +3,7 @@ import template from "./Avatar.hbs?raw";
 
 interface IAvatarProps extends BlockProps {
     image?: {
-        src: string;
+        src: string | null;
         alt: string;
     };
     attributes: {

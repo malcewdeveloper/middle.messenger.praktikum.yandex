@@ -1,10 +1,11 @@
 import { Block, type BlockProps } from "../../core/Block";
+import { connect } from "../../core";
 import { ChatPreview, ChatsPanel } from "../../modules";
 import template from "./ChatPage.hbs?raw";
 
 interface IChatPageProps extends BlockProps {}
 
-export default class ChatPage extends Block {
+class _ChatPage extends Block {
     constructor(props: IChatPageProps) {
         super({
             ...props,
@@ -16,3 +17,9 @@ export default class ChatPage extends Block {
         return this.compile(template, this._props);
     }
 }
+
+const ChatPage = connect((state) => ({
+    activeChat: state.activeChat,
+}))(_ChatPage as typeof Block);
+
+export default ChatPage;

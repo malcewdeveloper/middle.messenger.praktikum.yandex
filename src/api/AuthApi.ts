@@ -8,7 +8,7 @@ import { HTTPTransport } from "../core";
 
 const authApi = new HTTPTransport("/auth");
 
-export default class AuthApi {
+export class AuthApi {
     async login(data: LoginSubmitData): Promise<void | Error> {
         return authApi.post("/signin", {
             headers: {

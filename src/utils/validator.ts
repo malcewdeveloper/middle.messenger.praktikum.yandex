@@ -7,6 +7,14 @@ const PATTERNS = {
         errorMessage: "Неверный пароль!",
         exp: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/,
     },
+    newPassword: {
+        errorMessage: "Неверный пароль!",
+        exp: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/,
+    },
+    oldPassword: {
+        errorMessage: "Неверный пароль!",
+        exp: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/,
+    },
     email: {
         errorMessage: "Неверный формат почты!",
         exp: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/,
