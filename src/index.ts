@@ -1,34 +1,37 @@
 import "./global.scss";
 import * as Pages from "./pages";
-import { Block, render } from "./core";
+import { Block, Router } from "./core";
+import { protectedRoutes, Routes } from "./config";
+import { getCurrentUser, getChats } from "./services";
 
-interface Pages {
-    [path: string]: Block;
-}
+document.addEventListener("DOMContentLoaded", async () => {
+    const router = new Router("#app");
 
-const pages: Pages = {
-    "/": new Pages.PreviewPage({}),
-    "/main": new Pages.ChatPage({}),
-    "/register": new Pages.RegisterPage({}),
-    "/login": new Pages.LoginPage({}),
-    "/profile": new Pages.ProfilePage({}),
-    "/not-found": new Pages.NotFound({}),
-    "/error": new Pages.ErrorPage({
-        code: 500,
-        message: "Ошибка сервера, обратись к разработчику!",
-    }),
-};
+    router
+        .use("/", Pages.LoginPage as typeof Block)
+        .use("/sign-up", Pages.RegisterPage as typeof Block)
+        .use("/messenger", Pages.ChatPage as typeof Block)
+        .use("/settings", Pages.ProfilePage as typeof Block)
+        .use("/not-found", Pages.NotFound as typeof Block)
+        .use("/error", Pages.ErrorPage as typeof Block)
+        .start();
 
-const navigate = () => {
-    if (pages[window.location.pathname]) {
-        const page = pages[window.location.pathname];
+    const isRouteProtected = protectedRoutes.includes(
+        window.location.pathname as Routes,
+    );
 
-        render("#app", page);
-    } else {
-        render("#app", pages["/not-found"]);
+    try {
+        await getCurrentUser();
+        await getChats();
+
+        if (!isRouteProtected) {
+            router.go(Routes.Messenger);
+        }
+    } catch (error) {
+        console.log(error); // Убрать
+
+        if (isRouteProtected) {
+            router.go(Routes.Login);
+        }
     }
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-    navigate();
 });

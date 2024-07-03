@@ -36,8 +36,8 @@ export default class Block<T extends BlockProps = BlockProps> {
             ...props,
             __id: this._id,
         }) as unknown as T;
-        this.children = this._makeProxyProps({ ...children });
-        this._lists = this._makeProxyProps({ ...lists });
+        this.children = this._makeProxyProps(children);
+        this._lists = this._makeProxyProps(lists);
         this._registerEvents(this._eventBus);
         this._eventBus.emit(Block.EVENTS.INIT);
     }
@@ -118,13 +118,12 @@ export default class Block<T extends BlockProps = BlockProps> {
 
     private _componentDidMount() {
         this.componentDidMount();
-        Object.values(this.children).forEach((child) => {
-            child.dispatchComponentDidMount();
-        });
+        this._eventBus.emit(Block.EVENTS.RENDER);
     }
 
     private _componentDidUpdate(oldProps: T, newProps: T) {
         const isRender = this.componentDidUpdate(oldProps, newProps);
+
         if (isRender) {
             this._eventBus.emit(Block.EVENTS.RENDER);
         }
@@ -163,37 +162,40 @@ export default class Block<T extends BlockProps = BlockProps> {
 
     dispatchComponentDidMount() {
         this._eventBus.emit(Block.EVENTS.CDM);
+
+        Object.values(this.children).forEach((child) => {
+            child.dispatchComponentDidMount();
+        });
     }
 
     componentDidUpdate(oldProps: T, newProps: T) {
-        console.log(oldProps, newProps);
-        return true;
+        return oldProps !== newProps;
     }
 
-    setProps(newProps: T) {
-        if (!newProps) {
+    setProps(nextProps: T) {
+        if (!nextProps) {
             return;
         }
 
         this._setUpdate = false;
         const oldProps = { ...this._props };
 
-        const { children, props, lists } = this._getChildren(newProps);
+        const { children, props, lists } = this._getChildren(nextProps);
 
-        if (Object.values(children).length) {
+        if (Object.values(children).length > 0) {
             Object.assign(this.children, children);
         }
 
-        if (Object.values(props).length) {
+        if (Object.values(props).length > 0) {
             Object.assign(this._props, props);
         }
 
-        if (Object.values(lists).length) {
-            Object.assign(this._lists, props);
+        if (Object.values(lists).length > 0) {
+            Object.assign(this._lists, lists);
         }
 
         if (this._setUpdate) {
-            this._eventBus.emit(Block.EVENTS.CDU, oldProps, this._props);
+            this._eventBus.emit(Block.EVENTS.CDU, oldProps, nextProps);
             this._setUpdate = false;
         }
     }
@@ -257,12 +259,20 @@ export default class Block<T extends BlockProps = BlockProps> {
 
     init() {
         this._element = this._createDocumentElement();
-        this._eventBus.emit(Block.EVENTS.RENDER);
+        this._eventBus.emit(Block.EVENTS.CDM);
     }
 
-    show() {}
+    show() {
+        if (this._element) {
+            this._element.style.display = "block";
+        }
+    }
 
-    hide() {}
+    hide() {
+        if (this._element) {
+            this._element.style.display = "none";
+        }
+    }
 
     public get element() {
         return this._element;

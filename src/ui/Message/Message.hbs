@@ -1,4 +1,4 @@
-<div class="message">
+<div class="message{{#if isMessageMe}} message_me{{/if}}">
     {{#if content.image}}
         <div class="message__image-wrapper">
             <img class="message__image" src="{{{content.image}}}" alt="Image description">

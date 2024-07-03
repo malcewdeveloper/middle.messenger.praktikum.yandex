@@ -18,9 +18,10 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, "method">;
 
-
-type HttpMethod = <R = unknown>(url: string, options?: OptionsWithoutMethod) => Promise<R>;
-
+type HttpMethod = <R = unknown>(
+    url: string,
+    options?: OptionsWithoutMethod,
+) => Promise<R>;
 
 export default class HTTPTransport {
     private _url?: string;
@@ -35,7 +36,7 @@ export default class HTTPTransport {
             { ...options, method: "GET" },
             options?.timeout,
         );
-    }
+    };
 
     post: HttpMethod = (url, options) => {
         return this._request(
@@ -43,7 +44,7 @@ export default class HTTPTransport {
             { ...options, method: "POST" },
             options?.timeout,
         );
-    }
+    };
 
     put: HttpMethod = (url, options) => {
         return this._request(
@@ -51,7 +52,7 @@ export default class HTTPTransport {
             { ...options, method: "PUT" },
             options?.timeout,
         );
-    }
+    };
 
     delete: HttpMethod = (url, options) => {
         return this._request(
@@ -59,7 +60,7 @@ export default class HTTPTransport {
             { ...options, method: "DELETE" },
             options?.timeout,
         );
-    }
+    };
 
     private _request = <TResponse = unknown>(
         url: string,
@@ -74,32 +75,33 @@ export default class HTTPTransport {
 
             xhr.open(
                 method,
-                isGet && data
+                isGet && !!data
                     ? `${this._url}${url}${queryString(data)}`
                     : `${this._url}${url}`,
             );
 
-            if (headers) {
+            if (headers && typeof headers === "object") {
                 Object.keys(headers).forEach((key) => {
                     xhr.setRequestHeader(key, headers[key]);
                 });
             }
 
-            xhr.onload = () => {
-                if (xhr.status !== 200) {
-					reject(xhr.responseText);
-				}
-				if (xhr.response === 'OK') {
-					resolve(xhr.response as TResponse);
-				} else {
-					resolve(JSON.parse(xhr.response) as TResponse);
-				}
-            };
-
             xhr.onabort = reject;
             xhr.onerror = reject;
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
+            xhr.withCredentials = true;
+
+            xhr.onload = () => {
+                if (xhr.status !== 200) {
+                    reject(xhr.responseText);
+                }
+                if (xhr.response === "OK") {
+                    resolve(xhr.response as TResponse);
+                } else {
+                    resolve(JSON.parse(xhr.response) as TResponse);
+                }
+            };
 
             if (isGet || !data) {
                 xhr.send();

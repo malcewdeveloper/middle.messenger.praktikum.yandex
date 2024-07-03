@@ -2,3 +2,8 @@ export * from "./Chat";
 export * from "./TopPanel";
 export * from "./BottomPanel";
 export * from "./Input";
+export * from "./CreateChat";
+export * from "./AddUser";
+export * from "./Dropdown";
+export * from "./UpdatePassword";
+export * from "./FileInput";
