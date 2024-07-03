@@ -14,7 +14,7 @@ interface ITopPanelProps extends BlockProps {
 
 class _TopPanel extends Block {
     constructor(props: ITopPanelProps) {
-        const addUserModal = new Modal({
+        const addUserModal: Modal = new Modal({
             title: "Добавить пользователя",
             children: [
                 new AddUser({
@@ -23,7 +23,7 @@ class _TopPanel extends Block {
             ],
         });
 
-        const deleteUserModal = new Modal({
+        const deleteUserModal: Modal = new Modal({
             title: "Удалить пользователя",
             children: [
                 new DeleteUser({
