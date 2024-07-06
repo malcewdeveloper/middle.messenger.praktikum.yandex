@@ -15,17 +15,6 @@ const messageInput = new BaseInput({
     attributes: {
         class: "bottom-panel__input",
     },
-    events: {
-        blur: (e) => {
-            const el = e.target as HTMLInputElement;
-
-            const { isValid } = validator(el.value, "message");
-
-            if (!isValid) {
-                console.log("Validation error");
-            }
-        },
-    },
 });
 
 export default class BottomPanel extends Block {

@@ -3,14 +3,14 @@ import { BaseInput, IBaseInputProps } from "../../ui";
 import template from "./Input.hbs?raw";
 import { TypePattern, validator } from "../../utils";
 
-interface IInputPtops extends IBaseInputProps {
+interface IInputProps extends IBaseInputProps {
     label?: string;
     error?: boolean;
     errorMessage?: string;
 }
 
 export default class Input extends Block {
-    constructor(props: IInputPtops) {
+    constructor(props: IInputProps) {
         super({
             ...props,
             Input: new BaseInput({ ...props }),

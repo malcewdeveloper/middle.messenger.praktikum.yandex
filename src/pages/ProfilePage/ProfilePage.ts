@@ -1,5 +1,5 @@
 import { Block, type BlockProps } from "../../core/Block";
-import { Avatar, Button, Modal } from "../../ui";
+import { Avatar, BaseInput, Button, Modal } from "../../ui";
 import { FileInput, Input, UpdatePassword } from "../../components";
 import { connect } from "../../core";
 import { TypePattern, validator } from "../../utils";
@@ -22,57 +22,63 @@ class ProfileItem extends Block {
     }
 }
 
-const loginInput: Input = new Input({
-    type: "text",
-    placeholder: "ivanovivanov",
-    name: "login",
+const LoginInput = connect((state) => ({
     label: "Логин",
-    events: {
-        blur: (e) => loginInput.handleBlur(e, "login"),
-    },
-});
+    Input: new BaseInput({
+        type: "text",
+        value: state.user?.login,
+        name: "login",
+        placeholder: "ivanivanov",
+    }),
+}))(Input as typeof Block);
 
-const phoneInput: Input = new Input({
-    type: "phone",
-    placeholder: "+79099673030",
-    name: "phone",
+const PhoneInput = connect((state) => ({
     label: "Телефон",
-    events: {
-        blur: (e) => phoneInput.handleBlur(e, "phone"),
-    },
-});
+    Input: new BaseInput({
+        type: "phone",
+        value: state.user?.phone,
+        placeholder: "+7909XXXXXXX",
+        name: "phone",
+    }),
+}))(Input as typeof Block);
 
-const emailInput: Input = new Input({
-    type: "email",
-    placeholder: "pochta@yandex.ru",
-    name: "email",
+const EmailInput = connect((state) => ({
     label: "Почта",
-    events: {
-        blur: (e) => emailInput.handleBlur(e, "email"),
-    },
-});
+    Input: new BaseInput({
+        type: "email",
+        value: state.user?.email,
+        placeholder: "pochta@yandex.ru",
+        name: "email",
+    }),
+}))(Input as typeof Block);
 
-const nameInput: Input = new Input({
-    type: "text",
-    placeholder: "Иван",
-    name: "first_name",
+const NameInput = connect((state) => ({
     label: "Имя",
-    events: {
-        blur: (e) => nameInput.handleBlur(e, "first_name"),
-    },
-});
+    Input: new BaseInput({
+        type: "text",
+        value: state.user?.first_name,
+        placeholder: "Иван",
+        name: "first_name",
+    }),
+}))(Input as typeof Block);
 
-const surnameInput: Input = new Input({
-    type: "text",
-    placeholder: "Иванов",
-    name: "second_name",
+const SurnameInput = connect((state) => ({
     label: "Фамилия",
-    events: {
-        blur: (e) => surnameInput.handleBlur(e, "second_name"),
-    },
-});
+    Input: new BaseInput({
+        type: "text",
+        value: state.user?.second_name,
+        placeholder: "Иванов",
+        name: "second_name",
+    }),
+}))(Input as typeof Block);
 
-const inputs = [loginInput, phoneInput, emailInput, nameInput, surnameInput];
+const inputs = [
+    new LoginInput({}),
+    new PhoneInput({}),
+    new EmailInput({}),
+    new NameInput({}),
+    new SurnameInput({}),
+];
 
 class _ProfilePage extends Block {
     constructor(props: IProfilePageProps) {
