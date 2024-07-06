@@ -3,9 +3,6 @@ import * as Pages from "./pages";
 import { Block, Router } from "./core";
 import { protectedRoutes, Routes } from "./config";
 import { getCurrentUser, getChats } from "./services";
-import { store } from "./core";
-
-window.store = store;
 
 document.addEventListener("DOMContentLoaded", async () => {
     const router = new Router("#app");
