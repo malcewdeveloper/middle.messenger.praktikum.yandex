@@ -1,8 +1,4 @@
-import {
-    ILoginData,
-    IRegisterData,
-    IUser,
-} from "../interfaces";
+import { ILoginData, IRegisterData, IUser } from "../interfaces";
 import { HTTPTransport } from "../core";
 
 const authApi = new HTTPTransport("/auth");
@@ -17,9 +13,7 @@ export class AuthApi {
         });
     }
 
-    async register(
-        data: IRegisterData,
-    ): Promise<{ id: number }> {
+    async register(data: IRegisterData): Promise<{ id: number }> {
         return authApi.post("/signup", {
             headers: {
                 "Content-Type": "application/json",

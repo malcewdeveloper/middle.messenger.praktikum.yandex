@@ -6,7 +6,7 @@ import { Avatar, Badge, Button, Modal } from "../../ui";
 import { store } from "../../core";
 import template from "./ChatsPanel.hbs?raw";
 import MessagesService from "../../services/MessagesService";
-import { getChatToken, selectChat } from "../../services";
+import { getChats, getChatToken, selectChat } from "../../services";
 
 interface IChatsPanelProps extends BlockProps {
     chats?: IChat[];
@@ -108,6 +108,8 @@ const ChatsPanel = connect((state) => ({
                                     chat.id,
                                 );
                             });
+
+                            getChats();
                         },
                     },
                 }),
