@@ -48,11 +48,11 @@
         "uuid": "^9.0.1"
     },
     "lint-staged": {
-        "*.ts": [
+        "src/**/*.{js,jsx,ts,tsx}": [
             "npm run test",
             "npm run lint"
         ],
-        "*.scss": [
+        "src/**/*.{css,scss}": [
             "npm run test",
             "npm run lint:style"
         ]
