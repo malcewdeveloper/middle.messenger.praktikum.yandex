@@ -8,11 +8,11 @@
         "build": "tsc && vite build",
         "start": "tsc && npm run build && node server/server.cjs",
         "preview": "vite preview",
-        "eslint": "eslint .",
+        "lint": "eslint .",
         "lint:style": "stylelint 'src/**/*.scss'",
-        "lint": "npm run eslint && npm run lint:style && tsc",
         "test": "mocha -r ts-node/register --config .mocharc.json",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "lint-staged": "lint-staged"
     },
     "devDependencies": {
         "@types/chai": "^4.3.16",
@@ -47,15 +47,14 @@
         "handlebars": "^4.7.8",
         "uuid": "^9.0.1"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
     "lint-staged": {
         "*.ts": [
             "npm run test",
             "npm run lint"
+        ],
+        "*.scss": [
+            "npm run test",
+            "npm run lint:style"
         ]
     }
 }
