@@ -1,16 +1,15 @@
 import { HTTPTransport } from "../core";
 import {
-    IChat,
     ICreateChatData,
     IAddUserData,
     IChatTokenData,
     IDeleteUserData,
 } from "../interfaces";
 
-const chatsApi = new HTTPTransport("/chats");
+const chatsApi = new HTTPTransport("https://ya-praktikum.tech/api/v2/chats");
 
 export class ChatsApi {
-    async getChats(): Promise<IChat[]> {
+    async getChats() {
         return chatsApi.get("");
     }
 
@@ -35,7 +34,7 @@ export class ChatsApi {
         });
     }
 
-    async getChatToken(data: IChatTokenData): Promise<{ token: string }> {
+    async getChatToken(data: IChatTokenData) {
         return chatsApi.post(`/token/${data.id}`, {
             headers: { "Content-Type": "application/json" },
         });

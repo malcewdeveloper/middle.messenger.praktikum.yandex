@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type PlainObject<T = any> = { [key in string]: T };
+
 function isPlainObject(value: unknown): value is PlainObject {
     return (
         typeof value === "object" &&

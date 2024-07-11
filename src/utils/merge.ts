@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type PlainObject<T = any> = { [key in string]: T };
+
 export function merge(lhs: PlainObject, rhs: PlainObject): PlainObject {
     for (const p in rhs) {
         // eslint-disable-next-line no-prototype-builtins

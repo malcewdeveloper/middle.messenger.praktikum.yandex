@@ -7,8 +7,6 @@ const METHODS = {
     DELETE: "DELETE",
 };
 
-const API_URL = "https://ya-praktikum.tech/api/v2";
-
 type Options = {
     data?: object;
     headers?: Record<string, string>;
@@ -27,7 +25,7 @@ export default class HTTPTransport {
     private _url?: string;
 
     constructor(url?: string) {
-        this._url = `${API_URL}${url}`;
+        this._url = url;
     }
 
     get: HttpMethod = (url, options) => {
@@ -93,13 +91,10 @@ export default class HTTPTransport {
             xhr.withCredentials = true;
 
             xhr.onload = () => {
-                if (xhr.status !== 200) {
-                    reject(xhr.responseText);
-                }
-                if (xhr.response === "OK") {
-                    resolve(xhr.response as TResponse);
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(xhr.response);
                 } else {
-                    resolve(JSON.parse(xhr.response) as TResponse);
+                    reject(xhr);
                 }
             };
 

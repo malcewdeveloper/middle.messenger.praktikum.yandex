@@ -1,6 +1,6 @@
 import { Router } from "../core";
 import { AuthApi } from "../api";
-import { ILoginData, IRegisterData } from "../interfaces";
+import { ILoginData, IRegisterData, IUser } from "../interfaces";
 import { Routes } from "../config";
 import { store } from "../core";
 
@@ -41,6 +41,6 @@ export const logout = async () => {
 };
 
 export const getCurrentUser = async () => {
-    const user = await authApi.getUser();
-    store.set("user", user);
+    const user = (await authApi.getUser()) as string;
+    store.set("user", JSON.parse(user) as IUser);
 };
