@@ -6,16 +6,6 @@
 
 Этот проект создан в рамках обучения в Яндекс Практикуме и служит примером реализации основных концепций веб-разработки. Наш мессенджер призван продемонстрировать работу с базой данных, механизмы аутентификации пользователей и обработку взаимодействия между ними без использования сторонних библиотек React, Vue, Angular и др.
 
-## Ссылки
-
-- [Главная страница](https://ya-messenger-praktikum.netlify.app/)
-- [Страница чатов и ленты переписки](https://ya-messenger-praktikum.netlify.app/main)
-- [Профиль](https://ya-messenger-praktikum.netlify.app/profile)
-- [Авторизация](https://ya-messenger-praktikum.netlify.app/login)
-- [Регистрация](https://ya-messenger-praktikum.netlify.app/register)
-- [404](https://ya-messenger-praktikum.netlify.app/not-found)
-- [5**](https://ya-messenger-praktikum.netlify.app/error)
-
 ## Запуск проекта
 
 Для запуска проекта вам потребуется Node.js и npm на вашем компьютере.
@@ -60,6 +50,9 @@
 ## Технологии
 
 - **Frontend**: HTML, SCSS, JavaScript, TypeScript, Handlebars, Vite
+- **Unit Testing**: Mocha, Chai, Sinon
+- **Git Hooks**: Husky, Lint Staged
+- **Code Style**: Prettier, ESLint, StyleLint, Editor
 - **Backend**: Node.js, Express.js
 
 ## Дизайн
