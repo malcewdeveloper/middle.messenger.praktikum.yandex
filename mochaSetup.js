@@ -17,3 +17,5 @@ global.scroll = (number1, number2) => {
 };
 // eslint-disable-next-line no-undef
 global.MouseEvent = jsdom.window.MouseEvent;
+// eslint-disable-next-line no-undef
+global.FormData = jsdom.window.FormData;
