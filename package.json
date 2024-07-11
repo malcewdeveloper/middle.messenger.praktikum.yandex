@@ -12,7 +12,8 @@
         "lint:style": "stylelint 'src/**/*.scss'",
         "test": "mocha -r ts-node/register --config .mocharc.json",
         "prepare": "husky install",
-        "lint-staged": "lint-staged"
+        "lint-staged": "lint-staged",
+        "pre-commit": "npx lint-staged"
     },
     "devDependencies": {
         "@types/chai": "^4.3.16",
