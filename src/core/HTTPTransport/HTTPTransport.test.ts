@@ -60,6 +60,9 @@ describe("HTTPTransport", () => {
 
         const response = await http.put<string>("/posts/1", {
             data: mockData,
+            headers: {
+                "Content-Type": "application/json",
+            },
         });
 
         const result = JSON.parse(response).id;
