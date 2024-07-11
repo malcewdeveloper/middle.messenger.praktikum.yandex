@@ -1,7 +1,7 @@
-import { ILoginData, IRegisterData, IUser } from "../interfaces";
+import { ILoginData, IRegisterData } from "../interfaces";
 import { HTTPTransport } from "../core";
 
-const authApi = new HTTPTransport("/auth");
+const authApi = new HTTPTransport("https://ya-praktikum.tech/api/v2/auth");
 
 export class AuthApi {
     async login(data: ILoginData): Promise<void | Error> {
@@ -26,7 +26,7 @@ export class AuthApi {
         return authApi.post("/logout", {});
     }
 
-    async getUser(): Promise<IUser | Error> {
+    async getUser() {
         return authApi.get("/user");
     }
 }

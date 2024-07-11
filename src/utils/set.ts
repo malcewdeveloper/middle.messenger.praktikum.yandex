@@ -1,5 +1,8 @@
 import { merge } from "./merge";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type PlainObject<T = any> = { [key in string]: T };
+
 export function set(
     object: PlainObject,
     path: string,

@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type PlainObject<T = any> = { [key in string]: T };
+
 import { default as store, StoreEvents } from "./Store";
 import { Block, type BlockProps } from "../Block";
 import { State } from "./Store";

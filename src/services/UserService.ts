@@ -14,9 +14,9 @@ export const changePassword = async (data: IChangePasswordData) => {
 
 export const changeAvatar = async (file: File) => {
     try {
-        const response = await userApi.changeAvatar(file); // Проверить на работоспособность, что возращается в response?
+        const response = (await userApi.changeAvatar(file)) as string;
 
-        store.set("user", response);
+        store.set("user", JSON.parse(response) as IUser);
     } catch (error) {
         console.log(`Error occurred while changing avatar`);
     }
@@ -24,9 +24,9 @@ export const changeAvatar = async (file: File) => {
 
 export const updateProfile = async (data: IUser) => {
     try {
-        const newUser = await userApi.updateProfile(data);
+        const newUser = (await userApi.updateProfile(data)) as string;
 
-        store.set("user", newUser);
+        store.set("user", JSON.parse(newUser) as IUser);
     } catch (error) {
         console.log(`Error occurred while changing user`);
     }
@@ -34,9 +34,11 @@ export const updateProfile = async (data: IUser) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const searchUser = async (login: string): Promise<IUser | any> => {
     try {
-        const users = (await userApi.getUserByLogin({
+        const response = (await userApi.getUserByLogin({
             login: login,
-        })) as IUser[];
+        })) as string;
+
+        const users = JSON.parse(response) as IUser[];
 
         if (users.length > 0) {
             return users[0];

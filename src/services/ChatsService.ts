@@ -14,10 +14,10 @@ const router = new Router("#app");
 const chatsApi = new ChatsApi();
 
 export const getChats = async () => {
-    const chats = await chatsApi.getChats();
+    const chats = (await chatsApi.getChats()) as string;
     if (!chats) return;
 
-    store.set("chats", chats);
+    store.set("chats", JSON.parse(chats) as IChat[]);
 
     return chats;
 };
@@ -63,7 +63,9 @@ export const getChatToken = async (
     data: IChatTokenData,
 ): Promise<{ token: string }> => {
     try {
-        return await chatsApi.getChatToken(data);
+        const response = (await chatsApi.getChatToken(data)) as string;
+
+        return JSON.parse(response);
     } catch (error) {
         throw new Error("Не удалось получить токен чата");
     }
